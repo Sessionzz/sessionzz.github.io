@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Sessionz</title>
+	<link href="Style.css" rel="stylesheet" type="text/css">
+	<script src="script.js" type="text/javascript"></script>
+	<script src="barba.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="barba-wrapper">
+ 		 <div class="barba-container">
+			<div class="Session">
+				<a href="Index.html">
+					1
+				</a>
+			</div>
+ 		 </div>
+	</div>
+	<script>
+		$('document').ready(function(){
+            var transEffect = Barba.BaseTransition.extend({
+                start: function(){
+                  this.newContainerLoading.then(val => this.fadeInNewcontent($(this.newContainer)));
+                },
+                fadeInNewcontent: function(nc) {
+                  nc.hide();
+                  var _this = this;
+                  $(this.oldContainer).fadeOut(1000).promise().done(() => {
+                    nc.css('visibility','visible');
+                    nc.fadeIn(1000, function(){
+                      _this.done();
+                    })
+                  });
+                }
+            });
+            Barba.Pjax.getTransition = function() {
+              return transEffect;
+            }
+            Barba.Pjax.start();
+          });
+	</script>
+</body>
+</html>
+
+
