@@ -99,10 +99,9 @@ body{
 	margin:auto;
 }
 
-.two:hover{
-	opacity:0.8;
+.three{
+	right:0;
 }
-
 @keyframes Sessionz{
 	from{opacity:0}
 	to{opacity:1}
